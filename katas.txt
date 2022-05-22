@@ -1,0 +1,482 @@
+#################################################################################################################################################
+1.
+Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+
+function reverseWords(str) {
+  const pieces = str.split(/(\s+)/);
+  let newArr = [];
+  for (const item of pieces) {
+    newArr.push([...item].reverse().join(``));
+  }
+  return newArr.join(``);
+}
+#################################################################################################################################################
+2.
+Mr. Scrooge has a sum of money 'P' that he wants to invest. Before he does,
+he wants to know how many years 'Y' this sum 'P' has to be kept in the bank in order for it to amount to a desired sum of money 'D'.
+The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly. After paying taxes 'T' for the year the new sum is re-invested.
+Note to Tax: not the invested principal is taxed, but only the year's accrued interest.
+Your task is to complete the method provided and return the number of years 'Y' as a whole in order for Mr. Scrooge to get the desired sum.
+
+function calculateYears(principal, interest, tax, desired) {
+  let invest = 0;
+  if (principal === desired) {
+    return 0;
+  } else {
+    invest = principal;
+  }
+  let years = 0;
+  for (principal; invest < desired; years++) {
+    invest += invest * interest - invest * interest * tax;
+  }
+  return years;
+}
+#################################################################################################################################################
+3.
+Write function RemoveExclamationMarks which removes all exclamation marks from a given string.
+
+function removeExclamationMarks(s) {
+  const [...SS] = s;
+  let newSS = [];
+  for (const item of SS) {
+    if (item !== `!`) newSS.push(item);
+  }
+  return newSS.join(``);
+}
+#################################################################################################################################################
+4.
+You were camping with your friends far away from home, but when it's time to go back,
+you realize that your fuel is running out and the nearest pump is 50 miles away! You know that on average,
+your car runs on about 25 miles per gallon. There are 2 gallons left. Considering these factors,
+write a function that tells you if it is possible to get to the pump or not.
+Function should return true if it is possible and false if not. The input values are always positive.
+
+const zeroFuel = (distanceToPump, mpg, fuelLeft) => {
+  const range = mpg * fuelLeft;
+  return range >= distanceToPump;
+};
+#################################################################################################################################################
+5.
+Implement a function which convert the given boolean value into its string representation.
+
+function booleanToString(b) {
+  return String(b)
+}
+#################################################################################################################################################
+6.
+Can you find the needle in the haystack?
+Write a function findNeedle() that takes an array full of junk but containing one "needle"
+After your function finds the needle it should return a message (as a string) that says:
+"found the needle at position " plus the index it found the needle, so:
+findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])
+should return "found the needle at position 5" (in COBOL "found the needle at position 6")
+
+function findNeedle(haystack) {
+  for (const item of haystack) {
+    if (item === `needle`) return `found the needle at position ${haystack.indexOf(item)}`;
+  }
+}
+#################################################################################################################################################
+7.
+Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
+
+function doubleChar(str) {
+  let word = "";
+  for (let i = 0; i < str.length; i++) {
+    word = word + str[i] + str[i];
+  }
+  return word;
+}
+#################################################################################################################################################
+8.
+You are given the length and width of a 4-sided polygon. The polygon can either be a rectangle or a square.
+If it is a square, return its area. If it is a rectangle, return its perimeter.
+
+const areaOrPerimeter = function (l, w) {
+  return l !== w ? 2 * (l + w) : w * w;
+};
+#################################################################################################################################################
+9.
+Implement a function which multiplies two numbers.
+
+const multiply = (num1, num2) => num1 * num2;
+#################################################################################################################################################
+10.
+Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+
+function even_or_odd(number) {
+  return number % 2 ? `Odd` : `Even`;
+}
+#################################################################################################################################################
+11.
+Write a function named setAlarm which receives two parameters. The first parameter, employed,
+is true whenever you are employed and the second parameter, vacation is true whenever you are on vacation.
+The function should return true if you are employed and not on vacation(because these are the circumstances under which you need to set an alarm)
+It should return false otherwise
+
+function setAlarm(employed, vacation) {
+  return !vacation && employed;
+}
+#################################################################################################################################################
+12.
+Write a function which calculates the average of the numbers in a given list.
+Empty arrays should return 0.
+
+function find_average(array) {
+  let avg = 0;
+  for (const item of array) {
+    avg += item;
+  }
+  return avg / array.length || 0;
+}
+#################################################################################################################################################
+13.
+There is a bus moving in the city, and it takes and drop some people in each bus stop.
+You are provided with a list (or array) of integer pairs. Elements of each pair represent number of people get into bus (The first item)
+and number of people get off the bus (The second item) in a bus stop.
+Your task is to return number of people who are still in the bus after the last bus station (after the last array).
+Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
+The second value in the first integer array is 0, since the bus is empty in the first bus stop.
+
+var number = function(busStops){
+  var totalPeople = 0;
+  for (var i=0; i<busStops.length; i++) {
+    totalPeople += busStops[i][0];
+    totalPeople -= busStops[i][1];
+  }
+  return totalPeople;
+}
+#################################################################################################################################################
+14.
+Given an array of integers, return a new array with each value doubled.
+
+function maps(x) {
+  let dbl = [];
+  for (const item of x) {
+    dbl.push(item * 2);
+  }
+  return dbl;
+}
+#################################################################################################################################################
+15.
+Write a function that takes an array of words and smashes them together into a sentence and returns the sentence.
+You can ignore any need to sanitize words or add punctuation, but you should add spaces between each word.
+
+function smash(words) {
+  return words.join(` `);
+}
+#################################################################################################################################################
+16.
+In this simple Kata your task is to create a function that turns a string into a Mexican Wave.
+You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
+
+function wave(str) {
+  let newArr = [];
+  for (let i = 0; i < str.length; i++) {
+    let copy = str.split("");
+    if (copy[i] !== " ") {
+      copy[i] = copy[i].toUpperCase();
+      newArr.push(copy.join(""));
+    }
+  }
+  return newArr;
+}
+#################################################################################################################################################
+17.
+Create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+function filter_list(l) {
+  let newArr = [];
+  for (const item of l) {
+    if (typeof item !== `string`) newArr.push(item);
+  }
+  return newArr;
+}
+#################################################################################################################################################
+18.
+Implement the function unique_in_order which takes as argument a sequence and returns a list of items without,
+any elements with the same value next to each other and preserving the original order of elements.
+
+const uniqueInOrder = function (iterable) {
+  let unique = [];
+  for (let i = 0; i < iterable.length; i++) {
+    if (iterable[i] !== iterable[i + 1]) {
+      unique.push(iterable[i]);
+    }
+  }
+  return unique;
+};
+#################################################################################################################################################
+19.
+Your task is to write a function which returns the sum of following series upto nth term(parameter).
+
+function SeriesSum(n) {
+  let sum = 0;
+  for (let i = 0; i < n; i++) {
+    sum += 1 / (1 + i * 3);
+  }
+  return sum.toFixed(2);
+}
+#################################################################################################################################################
+20.
+Take an array and remove every second element from the array. Always keep the first element and start removing with the next element.
+
+function removeEveryOther(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    i % 2 ? `` : newArr.push(arr[i]);
+  }
+  return newArr;
+}
+#################################################################################################################################################
+21.
+Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible,
+containing distinct letters - each taken only once - coming from s1 or s2.
+
+function longest(s1, s2) {
+  const cStr = s1 + s2;
+  const uniq = [...new Set(cStr)];
+  return uniq.sort().join(``);
+}
+#################################################################################################################################################
+22.
+Create a function which answers the question "Are you playing banjo?".
+If your name starts with the letter "R" or lower case "r", you are playing banjo!
+
+function areYouPlayingBanjo(name) {
+  if (!name.toLowerCase().startsWith(`r`)) {
+    return `${name} does not play banjo`;
+  }
+  return `${name} plays banjo`;
+}
+#################################################################################################################################################
+23.
+Return the number (count) of vowels in the given string.
+We will consider a, e, i, o, u as vowels for this Kata (but not y).
+
+function getCount(str) {
+  const vowels = `aeiou`;
+  let vowelsCount = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (vowels.includes(str[i])) vowelsCount++;
+  }
+  return vowelsCount;
+}
+#################################################################################################################################################
+24.
+Your function takes two arguments: current father's age (years), current age of his son (years)
+Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old).
+
+function twiceAsOld(dadYearsOld, sonYearsOld) {
+  const calc = dadYearsOld - sonYearsOld * 2;
+  return Math.abs(calc)
+}
+#################################################################################################################################################
+25.
+I have a cat and a dog. I got them at the same time as kitten/puppy. That was humanYears years ago. Return their respective ages now as 
+[humanYears,catYears,dogYears]
+Cat Years
+15 cat years for first year
++9 cat years for second year
++4 cat years for each year after that
+Dog Years
+15 dog years for first year
++9 dog years for second year
++5 dog years for each year after that
+
+const humanYearsCatYearsDogYears = function (humanYears) {
+  if (humanYears === 1) {
+    return [1, 15, 15];
+  } else if (humanYears === 2) {
+    return [2, 24, 24];
+  } else {
+    return [humanYears, 16 + 4 * humanYears, 14 + 5 * humanYears];
+  }
+};
+#################################################################################################################################################
+26.
+You're writing code to control your town's traffic lights.
+You need a function to handle each change from green, to yellow, to red, and then to green again.
+Complete the function that takes a string as an argument representing the current state of the light,
+and returns a string representing the state the light should change to.
+
+function updateLight(current) {
+  switch (current) {
+    case `green`:
+      return `yellow`;
+    case `yellow`:
+      return `red`;
+    case `red`:
+      return `green`;
+    default:
+      return `error`;
+  }
+}
+#################################################################################################################################################
+27.
+Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
+
+function squareDigits(num) {
+  let newArr = [];
+  for (const item of num.toString()) {
+    newArr.push(item ** 2);
+  }
+  return Number(newArr.join(``));
+}
+#################################################################################################################################################
+28.
+Character recognition software is widely used to digitise printed texts. Thus the texts can be edited, searched and stored on a computer.
+When documents (especially pretty old ones written with a typewriter), are digitised character recognition softwares often make mistakes.
+Your task is correct the errors in the digitised text. You only have to handle the following mistakes:
+S is misinterpreted as 5
+O is misinterpreted as 0
+I is misinterpreted as 1
+The test cases contain numbers only by mistake.
+
+function correct(string) {
+  return string.replaceAll(`0`, `O`).replaceAll(`5`, `S`).replaceAll(`1`, `I`);
+}
+#################################################################################################################################################
+29.
+Complete the function that takes a non-negative integer n as input,
+and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
+
+function powersOfTwo(n) {
+  let powerArr = [];
+  for (let i = 0; i <= n; i++) {
+    powerArr.push(Math.pow(2, i));
+  }
+  return powerArr;
+}
+#################################################################################################################################################
+30.
+1.Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
+  1.1. Display a prompt window for the user to input the number of the selected option. The prompt should look like this:
+        What is your favourite programming language?
+        0: JavaScript
+        1: Python
+        2: Rust
+        3: C++
+        (Write option number)
+  1.2. Based on the input number, update the answers array. For example, if the option is 3, increase the value AT POSITION 3 of the array by 1. 
+       Make sure to check if the input is a number and if the number makes sense (e.g answer 52 wouldn't make sense, right?)
+2. Call this method whenever the user clicks the "Answer poll" button.
+3. Create a method 'displayResults' which displays the poll results. The method takes a string as an input (called 'type'),
+   which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log().
+   This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1". 
+4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
+5. Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option.
+   Do NOT put the arrays in the poll object! So what shoud the this keyword look like in this situation?
+
+const poll = {
+  question: "What is your favourite programming language?",
+  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+  answers: new Array(4).fill(0),
+  resgisterNewAnswer(ip) {
+    const t = Number(prompt(`${this.question + `\n`}${this.options.join(`\n`)}`));
+    if (!isNaN(t) && t < this.options.length && t >= 0) {
+      this.answers[t] = this.answers[t] + 1;
+    } else {
+      alert(`Please input a valid value!!!`);
+    }
+    this.displayResults(`string`);
+    this.displayResults(`array`);
+  },
+  displayResults(type = `array`) {
+    if (type === `string`) {
+      console.log(`Poll results are ${this.answers.join(`, `)}`);
+    } else if (type === `array`) {
+      console.log(this.answers);
+    }
+  },
+};
+document.querySelector(`.poll`).addEventListener(`click`, poll.resgisterNewAnswer.bind(poll));
+poll.displayResults.call({ answers: [5, 2, 3] }); // answer property needs to be same as in poll object
+#################################################################################################################################################
+31.
+Take an integer n (n >= 0) and a digit d (0 <= d <= 9) as an integer.
+Square all numbers k (0 <= k <= n) between 0 and n.
+Count the numbers of digits d used in the writing of all the k**2.
+Call nb_dig (or nbDig or ...) the function taking n and d as parameters and returning this count.
+
+function nbDig(n, d) {
+  const sqrs = [];
+  let digis = 0;
+  for (let i = 0; i <= n; i++) {
+    const t = String(i * i);
+    sqrs.push(t);
+  }
+  for (const item of [...sqrs]) {
+    for (const item2 of item) {
+      if (item2 === String(d)) {
+        digis++;
+      }
+    }
+  }
+  return digis;
+}
+#################################################################################################################################################
+32.
+Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order.
+Essentially, rearrange the digits to create the highest possible number.
+
+function descendingOrder(n) {
+  return Number(String(n).split(``).sort().reverse().join(``));
+}
+#################################################################################################################################################
+33.
+Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
+The output should be two capital letters with a dot separating them.
+
+function abbrevName(name) {
+  return name
+    .toUpperCase()
+    .split(` `)
+    .map((n) => n[0])
+    .join(`.`);
+}
+#################################################################################################################################################
+34.
+Write a function that checks if a given string (case insensitive) is a palindrome.
+
+function isPalindrome(x) {
+  const y = x.toLowerCase();
+  return y === y.split(``).reverse().join(``);
+}
+#################################################################################################################################################
+35.
+Given a non-empty array of integers, return the result of multiplying the values together in order.
+
+function grow(x) {
+  return x.reduce((acc, curr) => acc * curr);
+}
+#################################################################################################################################################
+36.
+Given two numbers and an arithmetic operator (name of it, as a string), return the result of the two numbers having that operator used on them.
+a and b will both be positive integers, and a will always be the first number in the operation, and b always the second.
+The four operators are "add", "subtract", "divide", "multiply".
+
+function arithmetic(a, b, operator) {
+  switch (operator) {
+    case `add`:
+      return a + b;
+    case `subtract`:
+      return a - b;
+
+    case `multiply`:
+      return a * b;
+
+    case `divide`:
+      return a / b;
+  }
+}
+#################################################################################################################################################
+37.
+Write a function that takes an array of numbers and returns the sum of the numbers. The numbers can be negative or non-integer.
+If the array does not contain any numbers then you should return 0.
+
+function sum(numbers) {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+#################################################################################################################################################
