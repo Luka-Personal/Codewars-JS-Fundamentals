@@ -2,6 +2,6 @@
 
 Just practising js fundamentals on codewars :)
 
-Date Finished (ongoing) - Слава Украине!
+Date Finished (ongoing) - Слава Україні!
 
 Created by - Luka Tsinaridze, Languages used - Vanilla Javascript
